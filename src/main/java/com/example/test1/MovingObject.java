@@ -4,7 +4,7 @@ import javafx.animation.TranslateTransition;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-abstract class MovingObject
+class MovingObject
 {
     protected int xPos, yPos;
     protected Image icon;

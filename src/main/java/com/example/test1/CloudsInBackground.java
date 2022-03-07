@@ -13,16 +13,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class CloudsInBackground extends ListMovingObjects {
+public class CloudsInBackground  {
+    private static final int BATCH_WIDTH = 400;
+    private static final int BATCH_HEIGHT = 900;
+    private static final double CLOUDS_PASSIVE_VELOCITY = 0.1;
+    private static final int TOTAL_FRAME_WIDTH = 100000 ;
+    private final int batchesOfClouds;
+    ArrayList<MovingObject> objectsList;
 //    List<Cloud> clouds;
 //    ImageView skyImageView;
 //    private int batchesOfClouds;
+    
+    
 
     public CloudsInBackground(Image cloudImage)
     {
-        BATCH_WIDTH = 400;
-        BATCH_HEIGHT = 900;
-        CLOUDS_PASSIVE_VELOCITY = 0.1;
         objectsList = new ArrayList<>();
         batchesOfClouds = (int) TOTAL_FRAME_WIDTH/BATCH_WIDTH;
 
@@ -53,6 +58,13 @@ public class CloudsInBackground extends ListMovingObjects {
 //            children.add(objectsList.get(i).getImageView());
 //        }
 //    }
+    public void addImageViewsToRoot(ObservableList<Node> children)
+    {
+        for(int i = 0 ; i < objectsList.size(); i++)
+        {
+            children.add(objectsList.get(i).getImageView());
+        }
+    }
 
 
     class Cloud extends MovingObject {
